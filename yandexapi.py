@@ -10,11 +10,10 @@ static_apikey = "f3a0fe3a-b07e-4840-a1da-06f18b2ddf13"
 org_apikey = "72e09cfa-9163-4f5c-ba75-916fb947567b"
 
 
-def get_static(api=static_apikey, ll='37.677751,55.757718', spn="0.016457,0.00619", pt=''):
+def get_static(api=static_apikey, ll='37.677751,55.757718', spn="", pt=''):
     return requests.get("https://static-maps.yandex.ru/v1", params={
         'apikey': api,
         'll': ll,
-        'spn': spn,
         'pt': pt
     })
 
@@ -33,3 +32,13 @@ def get_location(data):
     long, lat = toponym_coodrinates.split(" ")
     delta = "0.005"
     return long, lat, delta
+
+
+def get_org(api=org_apikey, ll="37.588392,55.734036", lang="ru_RU", text="аптека", type='biz'):
+    return requests.get("https://search-maps.yandex.ru/v1/", params={
+        'apikey': api,
+        'll': ll,
+        "lang": lang,
+        "type": type,
+        "text": text
+    })
