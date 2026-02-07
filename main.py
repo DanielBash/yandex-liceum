@@ -26,3 +26,4 @@ response = get_static(ll=",".join([long, lat]),
 im = BytesIO(response.content)
 opened_image = Image.open(im)
 opened_image.show()
+opened_image.save('_aaa.png')
