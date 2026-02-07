@@ -30,6 +30,6 @@ def get_geocoder(location='Красная пл-дь, 1', api=geocoder_apikey, fo
 def get_location(data):
     toponym = data["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
     toponym_coodrinates = toponym["Point"]["pos"]
-    toponym_longitude, toponym_lattitude = toponym_coodrinates.split(" ")
+    long, lat = toponym_coodrinates.split(" ")
     delta = "0.005"
-    return toponym_lattitude, toponym_lattitude, delta
+    return long, lat, delta

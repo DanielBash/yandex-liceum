@@ -11,6 +11,10 @@ from yandexapi import *
 
 
 toponym_to_find = " ".join(sys.argv[1:])
+
+if toponym_to_find == '':
+    toponym_to_find = 'Москва, ул. Ак. Королева, 12'
+
 response = get_geocoder(location=toponym_to_find)
 
 if not response:
@@ -23,6 +27,7 @@ long, lat, delta = get_location(response.json())
 response = get_static(ll=",".join([long, lat]),
                       spn=",".join([delta, delta]),
                       pt=",".join([long, lat]))
+
 im = BytesIO(response.content)
 opened_image = Image.open(im)
 opened_image.show()
